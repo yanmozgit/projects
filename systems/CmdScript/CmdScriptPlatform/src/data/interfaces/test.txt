@@ -1,0 +1,13 @@
+
+-- ## 获取TEST接口 --
+http://192.168.47.24:8028/cmdScript/test
+
+
+-- ## 获取进程ID --
+http://192.168.47.24:8028/cmdScript/getLinuxPID?command=jyQuartzPlatform
+http://192.168.47.24:8028/cmdScript/getLinuxPID2?commands=jyQuartzPlatform|java
+http://192.168.47.24:8028/cmdScript/getLinuxPID3?commands=jyQuartzPlatform|java&excludeCommands=curl|grep
+
+-- ## 关闭进程ID --
+http://192.168.47.24:8028/cmdScript/closeLinuxProcess?pid=27150
+http://192.168.47.24:8028/cmdScript/closeLinuxProcess?pid=27150

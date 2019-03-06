@@ -1,0 +1,10 @@
+
+-- ## 获取TEST接口 --
+http://127.0.0.1:8082/cmdScript/test
+
+
+-- ## 获取进程ID --
+http://127.0.0.1:8082/cmdScript/getLinuxPID?command=jyQuartzPlatform
+
+-- ## 关闭进程ID --
+http://127.0.0.1:8082/cmdScript/closeLinuxProcess?pid=123

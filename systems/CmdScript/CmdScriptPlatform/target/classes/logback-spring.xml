@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n" />
+	<property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+
+	<!-- 控制台打印日志的相关配置 -->
+	<appender name="STD-OUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- 保存日志文件的路径 -->
+		<!-- 日志格式 -->
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<!-- 日志级别过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<!-- 过滤的级别 -->
+			<level>DEBUG</level>
+		</filter>
+	</appender>
+
+	<!-- 文件保存日志的相关配置 -->
+	<appender name="ERROR-OUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 保存日志文件的路径 -->
+		<file>./logs/epg/error.log</file>
+		<!-- 日志格式 -->
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		<!-- 日志级别过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<!-- 过滤的级别 -->
+			<level>ERROR</level>
+			<!-- 匹配时的操作：接收（记录） -->
+			<onMatch>ACCEPT</onMatch>
+			<!-- 不匹配时的操作：拒绝（不记录） -->
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<!-- 循环政策：基于时间创建日志文件 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- 日志文件名格式 -->
+			<fileNamePattern>./logs/epg/error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 最大保存尺寸-->
+			<maxFileSize>100MB</maxFileSize>
+			<!-- 最大保存时间：30天-->
+			<maxHistory>30</maxHistory>
+			<!-- 累计最大文件-->
+			<totalSizeCap>2GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+
+	<!-- 文件保存日志的相关配置 -->
+	<appender name="INFO-OUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 保存日志文件的路径 -->
+		<file>./logs/epg/log.log</file>
+		<!-- 日志格式 -->
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		<!-- 日志级别过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<!-- 过滤的级别 -->
+			<level>INFO</level>
+			<!-- 匹配时的操作：接收（记录） -->
+			<onMatch>ACCEPT</onMatch>
+			<!-- 不匹配时的操作：拒绝（不记录） -->
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<!-- 循环政策：基于时间创建日志文件 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- 日志文件名格式 -->
+			<fileNamePattern>./logs/epg/log-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 最大保存尺寸-->
+			<maxFileSize>100MB</maxFileSize>
+			<!-- 最大保存时间：30天-->
+			<maxHistory>30</maxHistory>
+			<!-- 累计最大文件-->
+			<totalSizeCap>2GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+
+	<!-- 文件保存日志的相关配置 -->
+	<appender name="WARN-OUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 保存日志文件的路径 -->
+		<file>./logs/epg/warn.log</file>
+		<!-- 日志格式 -->
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		<!-- 日志级别过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<!-- 过滤的级别 -->
+			<level>WARN</level>
+			<!-- 匹配时的操作：接收（记录） -->
+			<onMatch>ACCEPT</onMatch>
+			<!-- 不匹配时的操作：拒绝（不记录） -->
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<!-- 循环政策：基于时间创建日志文件 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- 日志文件名格式 -->
+			<fileNamePattern>./logs/epg/warn-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 最大保存尺寸-->
+			<maxFileSize>100MB</maxFileSize>
+			<!-- 最大保存时间：30天-->
+			<maxHistory>30</maxHistory>
+			<!-- 累计最大文件-->
+			<totalSizeCap>2GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+
+	<!-- 文件保存日志的相关配置 -->
+	<!--<appender name="DEBUG-OUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		&lt;!&ndash; 保存日志文件的路径 &ndash;&gt;
+		<file>./logs/epg/debug.logger</file>
+		&lt;!&ndash; 日志格式 &ndash;&gt;
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		&lt;!&ndash; 日志级别过滤器 &ndash;&gt;
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			&lt;!&ndash; 过滤的级别 &ndash;&gt;
+			<level>DEBUG</level>
+			&lt;!&ndash; 匹配时的操作：接收（记录） &ndash;&gt;
+			<onMatch>ACCEPT</onMatch>
+			&lt;!&ndash; 不匹配时的操作：拒绝（不记录） &ndash;&gt;
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		&lt;!&ndash; 循环政策：基于时间创建日志文件 &ndash;&gt;
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			&lt;!&ndash; 日志文件名格式 &ndash;&gt;
+			<fileNamePattern>./logs/epg/debug-%d{yyyy-MM-dd}.%i.logger</fileNamePattern>
+			&lt;!&ndash; 最大保存尺寸&ndash;&gt;
+			<maxFileSize>100MB</maxFileSize>
+			&lt;!&ndash; 最大保存时间：30天&ndash;&gt;
+			<maxHistory>30</maxHistory>
+			&lt;!&ndash; 累计最大文件&ndash;&gt;
+			<totalSizeCap>2GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>-->
+
+	<!-- 文件保存日志的相关配置 -->
+	<!--<appender name="jfinal—all" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		&lt;!&ndash; 保存日志文件的路径 &ndash;&gt;
+		<file>./logs/epg/jfinal.logger</file>
+		&lt;!&ndash; 日志格式 &ndash;&gt;
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		&lt;!&ndash; 日志级别过滤器 &ndash;&gt;
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			&lt;!&ndash; 过滤的级别 &ndash;&gt;
+			<level>DEBUG</level>
+			&lt;!&ndash; 匹配时的操作：接收（记录） &ndash;&gt;
+			<onMatch>ACCEPT</onMatch>
+			&lt;!&ndash; 不匹配时的操作：拒绝（不记录） &ndash;&gt;
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		&lt;!&ndash; 循环政策：基于时间创建日志文件 &ndash;&gt;
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			&lt;!&ndash; 日志文件名格式 &ndash;&gt;
+			<fileNamePattern>./logs/epg/jfinal-%d{yyyy-MM-dd}.%i.logger</fileNamePattern>
+			&lt;!&ndash; 最大保存尺寸 &ndash;&gt;
+			<maxFileSize>100MB</maxFileSize>
+			&lt;!&ndash; 最大保存时间：30天&ndash;&gt;
+			<maxHistory>30</maxHistory>
+			&lt;!&ndash; 累计最大文件&ndash;&gt;
+			<totalSizeCap>2GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>-->
+
+	<!-- 配置日志管理系统 -->
+	<appender name="Sentry" class="com.getsentry.raven.logback.SentryAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+		<!-- DSN配置，各个项目不同 -->
+		<dsn>http://212ca9674b894491938b19743b36cf69:66133f36a2984722ab3ff6613930c7f0@log.jyiptv.cn:6093/2</dsn>
+		<!-- 应用程序版本号配置 -->
+		<release>1.0.0</release>
+		<!-- 产品类型，测试还是生产 -->
+		<environment>test</environment>
+		<!-- 四川酒店新版EPG接口 -->
+		<tags>tag1:四川酒店新版EPG接口,tag2:SpringBoot+MyBatis</tags>
+	</appender>
+
+	<!-- 基于dubug处理日志：具体控制台或者文件对日志级别的处理还要看所在appender配置的filter，如果没有配置filter，则使用root配置 -->
+	<root level="INFO">
+		<appender-ref ref="STD-OUT" />
+		<!--<appender-ref ref="INFO-OUT" />-->
+		<appender-ref ref="WARN-OUT" />
+		<appender-ref ref="ERROR-OUT" />
+		<!--<appender-ref ref="DEBUG-OUT" />-->
+		<!--<appender-ref ref="Sentry" />-->
+	</root>
+</configuration>

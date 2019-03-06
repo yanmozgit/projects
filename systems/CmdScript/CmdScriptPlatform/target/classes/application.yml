@@ -1,0 +1,17 @@
+
+# 配置相关信息
+security:
+  basic:
+    enabled: false
+spring:
+  main:
+    sources: com.cmd.script.CmdScriptApplication
+  profiles:
+    active: test
+  http:
+    encoding:
+      force: true
+
+# 服务器配置信息
+server:
+  context-path: /cmdScript
